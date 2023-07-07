@@ -35,7 +35,7 @@ def stream():
                 resized_frame = cv2.resize(video_frame, (200, 200))
 
                 # Encode the video frame as JPEG
-                ret, jpeg = cv2.imencode('.jpg', resized_frame)
+                ret, jpeg = cv2.imencode('.jpg', resized_frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
                 
                 # Yield the encoded frame
                 yield (b'--frame\r\n'
