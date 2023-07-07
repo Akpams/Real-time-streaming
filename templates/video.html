@@ -2,9 +2,17 @@
 <html>
 <head>
     <title>Video Display</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                $('#video-frame').attr('src', '/stream?' + new Date().getTime());
+            }, 1000); // Refresh every 1 second
+        });
+    </script>
 </head>
 <body>
     <h1>Video Display</h1>
-    <img src="{{ url_for('stream') }}" width="200" height="200" />
+    <img id="video-frame" src="{{ url_for('stream') }}" width="640" height="480" />
 </body>
 </html>
