@@ -44,4 +44,5 @@ def stream():
     return Response(generate(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port="8080", debug=True)
+    app.config['COMPRESS_RESPONSE'] = True
+    app.run(host='0.0.0.0',port="8080", debug=False)
