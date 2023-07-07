@@ -12,6 +12,7 @@ def video_feed():
     frame = request.files['frame'].read()
     nparr = np.frombuffer(frame, np.uint8)
     video_frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    
 
     # Store the video frame in the application context
     app.video_frame = video_frame
@@ -31,9 +32,10 @@ def stream():
             # Check if the video frame is available in the application context
             if hasattr(app, 'video_frame') and app.video_frame is not None:
                 video_frame = app.video_frame
+                resized_frame = cv2.resize(video_frame, (200, 200))
 
                 # Encode the video frame as JPEG
-                ret, jpeg = cv2.imencode('.jpg', video_frame)
+                ret, jpeg = cv2.imencode('.jpg', resized_frame)
                 
                 # Yield the encoded frame
                 yield (b'--frame\r\n'
