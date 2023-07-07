@@ -7,12 +7,12 @@
         $(document).ready(function() {
             setInterval(function() {
                 $('#video-frame').attr('src', '/stream?' + new Date().getTime());
-            }, 1000); // Refresh every 1 second
+            }, 6000); // Refresh every 1 second
         });
     </script>
 </head>
 <body>
     <h1>Video Display</h1>
-    <img id="video-frame" src="{{ url_for('stream') }}" width="640" height="480" />
+    <img id="video-frame" src="{{ url_for('stream') }}" width="320" height="240" />
 </body>
 </html>
