@@ -36,6 +36,11 @@ def stream():
 
                 # Encode the video frame as JPEG
                 ret, jpeg = cv2.imencode('.jpg', resized_frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
+                headers = {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                }
                 
                 # Yield the encoded frame
                 yield (b'--frame\r\n'
