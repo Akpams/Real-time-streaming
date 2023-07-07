@@ -35,7 +35,7 @@ def stream():
                 resized_frame = cv2.resize(video_frame, (200, 200))
 
                 # Encode the video frame as JPEG
-                ret, jpeg = cv2.imencode('.jpg', resized_frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
+                ret, jpeg = cv2.imencode('.jpg', resized_frame, [int(cv2.IMWRITE_JPEG_QUALITY), 20])
                 headers = {
                     'Cache-Control': 'no-cache, no-store, must-revalidate',
                     'Pragma': 'no-cache',
@@ -50,4 +50,4 @@ def stream():
 
 if __name__ == '__main__':
     app.config['COMPRESS_RESPONSE'] = True
-    app.run(host='0.0.0.0', debug=False)
+    app.run(host='0.0.0.0', port ="8080", debug=True)
