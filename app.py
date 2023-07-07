@@ -6,7 +6,7 @@ app = Flask(__name__, template_folder="templates")
 
 
 # Endpoint to receive video frames
-@app.route('/video_feed', methods=['POST'])
+@app.route('/video_feed', methods=['GET'])
 def video_feed():
     # Get the video frame from the request
     frame = request.files['frame'].read()
