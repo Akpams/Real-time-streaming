@@ -47,7 +47,3 @@ def stream():
                        b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n\r\n')
             
     return Response(generate(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-if __name__ == '__main__':
-    app.config['COMPRESS_RESPONSE'] = True
-    app.run(host='0.0.0.0', port ="8080", debug=True)
